@@ -2,10 +2,119 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//Mixins
+
+@mixin hide-text() {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+          border-radius: $radius;
+  background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+@mixin border-top-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+          border-top-right-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+          border-top-left-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin border-bottom-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+          border-bottom-right-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+          border-bottom-left-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin box-sizing($sizing) {
+  -webkit-box-sizing: $sizing;
+     -moz-box-sizing: $sizing;
+          box-sizing: $sizing;
+}
+
+//Styles
+
+body {
+  width:100%;
+  height: 100%;
+  position: relative;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/c/cf/1_zurich_panorama_grossmunster_limmat_river_2012.jpg) no-repeat center fixed;
+  background-size: cover;
+  color: #F9F3BB;
+}
+p.notice, p.alert {
+  margin-top: -20px;
+  padding: 15px;
+  @include border-bottom-radius(5px);
+  :empty {
+    @include hide-text();
+  }
+}
+
+
+.text-hide {
+  @include hide-text();
+}
+object {
+  max-width: 450px;
+  height: auto;
+}
+.jumbotron {
+  background: transparent;
+  background: rgba(0,0,0,0.5);
+  color:whitesmoke;
+}
+section {
+  width: 100%;
+  margin-top: 60px;
+  display: block;
+  position: absolute;
+  left:0;
+  right:0;
+  padding: 48px 40px;      
+}
+section#articles-preview {
+  background: #F9F3BB;
+  border-top: 1px solid #DEDDD4;
+  
+  .container{
+    
+    article {
+      position: relative;
+      padding: 15px;
+      background: no-repeat center;
+      background-size: cover;
+      background-clip: content-box;
+      
+      .content {
+        position: absolute;
+        width: calc(100% - 30px);
+        bottom: 15px;
+        padding: 15px;
+        color:whitesmoke;
+        background: transparent;
+        background: rgba(0,0,0,0.5);
+      }
+    }
+  
+    article:after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+  }
+}
 .form-signin {
   max-width: 330px;
-  padding: 15px;
+  padding: 30px;
   margin: 0 auto;
+  background: transparent;
+  background: rgba(0,0,0,0.5);
+  @include border-radius(15px);
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
@@ -17,9 +126,7 @@
 .form-signin .form-control {
   position: relative;
   height: auto;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  @include box-sizing(border-box);
   padding: 10px;
   font-size: 16px;
 }
@@ -28,11 +135,17 @@
 }
 .form-signin input[type="email"] {
   margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  @include border-bottom-radius(0);
 }
 .form-signin input[type="password"] {
   margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+}
+.form-signin input#user_password {
+  @include border-top-radius(0);
+}
+div#error_explanation {
+  background-color: #fcf8e3;
+  padding: 15px;
+  border: 2px solid #F89406;
+  color: #F89406;
 }
