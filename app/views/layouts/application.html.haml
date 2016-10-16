@@ -34,7 +34,8 @@
           = render 'layouts/navbar'
         / /.nav-collapse
     .container{:role => "main"}
-      - if notice || alert
-        %p.notice= notice
-        %p.alert= alert
+      - if notice
+        %p.notice.bg-success.text-success= notice
+      - if alert
+        %p.alert.bg-warning.text-warning= alert
       = yield

@@ -1,16 +1,20 @@
+-# Logo
 .text-center
-  %h1.text-hide Helvetia Dreamers
-  %object{:type => "image/svg+xml", :data => "http://wilsonsofoxford.com/images/HelvetiaLogo.svg"}
+  %object{:type => "image/svg+xml", :data => "http://wilsonsofoxford.com/images/HelvetiaLogo.svg", :"aria-labeledby" => "logo-label logo-desc", :"aria-describedby" => "logo-desc"}
+    -# Label and Description for ARIA
+    #logo-label.text-hide Helvetia Dreamers Brandmark 
+    #logo-desc.text-hide Helvetia Dreamers brandmark, a text-based mark which reads Helvetia Dreamers with an outline of the Matterhorn forming the second "A" incorporating the emblem of the Swiss flag. 
     %param{:name => "src", :value => "http://wilsonsofoxford.com/images/HelvetiaLogo.svg"}
+
 .jumbotron
-  %p Never miss an update. Sign up now to get Helvetia Dreamers in your mailbox!
-  %p
-    .input-group.input-group-lg
-      %span.input-group-addon Email
-      %input.form-control{:type => "email", "aria-label" => "Text input for email"}/
-      %span.input-group-btn
-        %button.btn.btn-primary.btn-lg{:type => "button"} Sign-up &raquo;
-%section#content-preview
+  %p Never miss an update. Subscride now to get Helvetia Dreamers in your mailbox!
+  .input-group.input-group-lg
+    %span.input-group-addon Email
+    %input.form-control{:type => "email", "aria-label" => "Text input for email"}/
+    %span.input-group-btn
+      %button.btn.btn-primary.btn-lg{:type => "button"} Subscribe &raquo;
+      
+%section#articles-preview
   .container
     %article.preview.col-md-6.col-lg-4{:style => "background-image: url(http://www.hdwallpapersfreedownload.com/uploads/large/animals/badger-hd-photos.jpg)"}
       .content
